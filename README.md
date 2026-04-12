@@ -13,6 +13,18 @@ A structured workspace that gives Claude Code the context, commands, and agents 
 
 ---
 
+## Prerequisites
+
+- [Claude Code](https://claude.ai/code) installed and authenticated
+- `git` — version control
+- `gh` — GitHub CLI, required for PR creation (`/describe_pr`, `/founder_mode`)
+  ```bash
+  # install gh: https://cli.github.com
+  gh auth login
+  ```
+
+---
+
 ## Setup — using this template for a new project
 
 1. **Copy this repo** into your project directory (or clone and re-init git):
