@@ -61,7 +61,14 @@ You are tasked with generating a comprehensive pull request description followin
    - Show the user the generated description
 
 9. **Update the PR:**
-   - Update the PR description directly: `gh pr edit {number} --body-file thoughts/prs/{number}_description.md`
+   - Prefer the API approach to avoid "Projects (classic)" warnings:
+     ```bash
+     gh api repos/{owner}/{repo}/pulls/{number} \
+       -X PATCH \
+       -f body="$(cat thoughts/prs/{number}_description.md)"
+     ```
+   - Get `{owner}/{repo}` from: `gh repo view --json nameWithOwner -q .nameWithOwner`
+   - Fallback (if API approach fails): `gh pr edit {number} --body-file thoughts/prs/{number}_description.md`
    - Confirm the update was successful
    - If any verification steps remain unchecked, remind the user to complete them before merging
 
